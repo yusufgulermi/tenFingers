@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +11,288 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #b2ceec;
+  user-select: none;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+.App {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+
+
+.loginApp{
+  display: flex;
+  width: 500px;
+  height: 400px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+  border-radius: 20px;
+}
+.loginApp input{
+  width: 250px;
+  height: 50px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 30px;
+  padding:0px 20px;
+}
+.loginApp button{
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #708fb1;
+  color: white;
+  font-size: 16px;
+}
+.loginApp button:hover{
+  cursor: pointer;
+  background-color: #436385;
+}
+.loginApp p{
+  font-size: 36px;
+}
+.header{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:0;
+  width: 100%;
+  background-color: black;
+  height: 80px;
+  color: white;
+ 
+}
+.header div{
+  min-width: 300px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  gap: 30px;
+  border-radius: 20px;
+  padding:0 20px;
+}
+.header button{
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.header button:hover{
+  cursor: pointer;
+  background-color: rgb(235, 96, 96);
+  color: white;
+}
+.current{
+  background-color: rgb(179, 179, 179);
+
+}
+.allWords{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  top: 80px;
+}
+.words{
+  position: relative;
+  font-size: 20px;
+  width: 600px;
+  height: 520px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  background-color: rgb(238, 236, 231);
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.correct{
+  color: #008000;
+}
+.incorrect{
+  color: red;
+}
+
+.allScores{
+  position: absolute;
+  width: 242px;
+  background-color: rgb(238, 236, 231);
+  max-height: 900px;
+  padding: 20px;
+  top: 100px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border:1px solid black;
+  border-radius:10px ;
+  box-shadow: 3px 3px 7px 2px #999;
+  
+}
+.invScores{
+  position: relative;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.savedScore{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 3px 3px 7px 4px #999;
+  width: 200px;
+  height: 100px;
+  color: white;
+  background-color: black;
+}
+
+.input-field{
+
+  display: flex;
+  width: 600px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: #87add6;
+  border-radius: 10px;
+  gap: 50px;
+
+}
+#input1{
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-size: 25px;
+  padding-left: 20px;
+  color: black;
+  outline: none;
+}
+.rst-btn{
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #BDDDFF;
+  transition: 0.2s;
+}
+.rst-btn:hover{
+  background-color: #436385;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+}
+
+.timer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #0c2b4d;
+  color: white;
+  border-radius: 5px;
+}
+.result {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 330px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(238, 236, 231);
+  box-shadow: 3px 3px 7px 2px #999;
+  top: 100px;
+  right: 20px;
+}
+.result h1{
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  background-color: #0c2b4d;
+  color: white;
+
+
+}
+.result>span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  padding: 0 20px;
+
+}
+.result :nth-child(2){
+  justify-content: center ;
+  font-size: 45px;
+  color: #008000;
+  height: 80px;
+}
+.result>div{
+  padding-bottom: 2px;
+}
+
+
+.save-btn{
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #87add6;
+  font-size: 16px;
+  transition: 0.2s;
+}
+.save-btn:hover{
+  background-color: #0c2b4d;
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1150px) {
+ .allScores{
+  position: relative;
+ }
+ .result{
+  position: relative;
+}
 }
