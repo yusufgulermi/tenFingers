@@ -52,6 +52,7 @@ const Login = () => {
           ></input>
           <p>Password:</p>
           <input
+          type="password"
           value={password}
             onChange={(e) => dispatch(getPsw(e.target.value.trim()))}
             placeholder="Type your password.."
