@@ -29,7 +29,7 @@ var words = ["move","make","so","example","than","sometimes","with","for",
 var length = words.length;
 var firstCounter = 0;
 var oldCounter = 0;
-
+var code;
 const Words = () => {
   const count = useSelector((state) => state.counter.value);
   const timer = useSelector((state) => state.timer.value);
@@ -38,8 +38,13 @@ const Words = () => {
   const resetHandle = () => {
     window.location.reload();
   };
+  
  
   useEffect(() => {
+    document.addEventListener('keydown', event => {
+      code=event.code;
+      console.log(code)
+    })
     const getUsername=JSON.parse(localStorage.getItem("username"))
     dispatch(getData(getUsername))
     dispatch(incrementInCorRes(0));
@@ -70,10 +75,10 @@ const Words = () => {
     document.getElementById("input1").disabled = true;
   }
   useEffect(() => {
-    if (count === " ") {
+    if (code==="Space") {
       dispatch(increment(""));
     }
-    if (count.trim() !== "" && count.includes(" ")) {
+    if (count.trim() !== "" && code==="Space") {
       if (words[firstCounter].trim() !== count.trim()) {
         document.getElementById(firstCounter).classList.add("incorrect");
         dispatch(incrementInCor());
@@ -114,7 +119,6 @@ const Words = () => {
       <div className="input-field">
         <input
           id="input1"
-          text="text"
           value={count}
           onChange={(e) => dispatch(increment(e.target.value))}
         ></input>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Words from "./component/Words";
+import Words from "./Words";
 import { useSelector } from "react-redux";
-import Result from "./component/Result";
+import Result from "./Result";
 import axios from "axios";
-import Header from "./component/Header";
+import Header from "./Header";
 
 
 function App() {
@@ -11,8 +11,9 @@ function App() {
   const timer = useSelector((state) => state.timer.value);
   const isUpt=useSelector((state)=>state.isUpdated.value)
   const [allData, setAllData] = useState([]);
-
   const [isLoading, setIsLoading] = useState(false);
+
+  
 
   useEffect(() => {
     setIsLoading(false)
