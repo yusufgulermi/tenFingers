@@ -6,6 +6,7 @@ import { incrementInCor, incrementInCorRes } from "../stores/inCorrectCount";
 import { incrementCor, incrementCorRes } from "../stores/correctCount";
 import { getStrokes } from "../stores/keystrokes";
 import { getData } from "../stores/data";
+
 var words = ["move","make","so","example","than","sometimes","with","for",
 "always","does","it's","family",
 "have","earth","may","use","along","say","children","begin","river",
@@ -36,14 +37,13 @@ const Words = () => {
   const dispatch = useDispatch();
 
   const resetHandle = () => {
-    window.location.reload();
+    window.location.reload()
   };
-  
+ 
  
   useEffect(() => {
     document.addEventListener('keydown', event => {
       code=event.code;
-      console.log(code)
     })
     const getUsername=JSON.parse(localStorage.getItem("username"))
     dispatch(getData(getUsername))
@@ -90,6 +90,11 @@ const Words = () => {
       oldCounter = firstCounter;
       firstCounter += 1;
       dispatch(increment(""));
+      if(firstCounter===words.length){
+        oldCounter = 0;
+        firstCounter = 0;
+
+      }
     }
   }, [count, dispatch]);
 

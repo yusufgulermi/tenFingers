@@ -19,7 +19,7 @@ const Timer = () => {
     clearInterval(refresh);
     timeIsOn = false;
   }
-
+  
   return <div className="timer">
     {timer}</div>;
 };

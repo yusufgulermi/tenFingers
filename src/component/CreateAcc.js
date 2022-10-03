@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 var usernameCheck = true;
 var passwordCheck = true;
 var usernameCont = true;
@@ -29,9 +30,7 @@ const CreateAcc = () => {
   }, [dispatch]);
   useEffect(() => {
     const getDatafromServer = async () => {
-      const response = await axios.get(
-        "https://63285d1c9a053ff9aab61b1a.mockapi.io/users"
-      );
+      const response = await axios.get(process.env.REACT_APP_USER_API_KEY);
       setAllData(response.data);
       setgotData(true);
     };
@@ -72,7 +71,7 @@ const CreateAcc = () => {
         dispatch(getData(""));
         dispatch(getPsw(""));
         dispatch(getConfirmPsw(""));
-        await axios.post("https://63285d1c9a053ff9aab61b1a.mockapi.io/users", {
+        await axios.post(process.env.REACT_APP_USER_API_KEY, {
           name: username,
           password: password,
         });

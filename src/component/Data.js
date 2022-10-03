@@ -3,6 +3,7 @@ import axios from "axios"
 import { useSelector,useDispatch } from 'react-redux'
 import { isUpdate } from '../stores/isUpdated';
 import { getData } from '../stores/data';
+
 var change=0;
 const Data = ({allData,setAllData}) => {
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const Data = ({allData,setAllData}) => {
 
     const handlePostData = async(dataName,cor)=>{
         
-        await axios.post(`https://63285d1c9a053ff9aab61b1a.mockapi.io/data`, {
+        await axios.post(process.env.REACT_APP_DATA_API_KEY, {
             name:dataName,
             score:cor
         })
@@ -21,7 +22,7 @@ const Data = ({allData,setAllData}) => {
     }
     const handlePutData =async(item,cor)=>{
         
-        await axios.put(`https://63285d1c9a053ff9aab61b1a.mockapi.io/data/${item}`, {
+        await axios.put(`${process.env.REACT_APP_DATA_API_KEY}/${item}`, {
             score:cor
         })
        
@@ -48,9 +49,7 @@ const Data = ({allData,setAllData}) => {
         const getUsername=JSON.parse(localStorage.getItem("username"))
         dispatch(getData(getUsername))
         const getDatafromServer = async () => {
-          const response = await axios.get(
-            "https://63285d1c9a053ff9aab61b1a.mockapi.io/data"
-          );
+          const response = await axios.get(process.env.REACT_APP_DATA_API_KEY);
           setAllData(response.data);
         };
         getDatafromServer();

@@ -5,6 +5,7 @@ import { getData, getPsw } from "../stores/data";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 const Login = () => {
   const [allData, setAllData] = useState([]);
   const [gotData, setgotData] = useState(false);
@@ -14,9 +15,7 @@ const Login = () => {
   const password = useSelector((state) => state.data.password);
   useEffect(() => {
     const getDatafromServer = async () => {
-      const response = await axios.get(
-        "https://63285d1c9a053ff9aab61b1a.mockapi.io/users"
-      );
+      const response = await axios.get(process.env.REACT_APP_USER_API_KEY);
       setAllData(response.data);
       setgotData(true);
     };

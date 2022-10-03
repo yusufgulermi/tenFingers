@@ -18,13 +18,12 @@ function App() {
   useEffect(() => {
     setIsLoading(false)
     const getDatafromServer = async () => {
-      const response = await axios.get(
-        "https://63285d1c9a053ff9aab61b1a.mockapi.io/data"
-      );
+      const response = await axios.get(process.env.REACT_APP_DATA_API_KEY);
       setIsLoading(true)
       setAllData(response.data);
     };
     getDatafromServer();
+    
   }, [isUpt]);
 
   return (
