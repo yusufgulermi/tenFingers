@@ -31,7 +31,7 @@ const Login = () => {
         dispatch(getPsw(""));
         setTimeout(() => {
           document.getElementById("loginSuccses").click();
-        }, 1000);
+        }, 400);
       } else {
         setIsLogin(0);
       }

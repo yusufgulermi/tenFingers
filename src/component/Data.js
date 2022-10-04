@@ -13,22 +13,23 @@ const Data = ({allData,setAllData}) => {
 
 
     const handlePostData = async(dataName,cor)=>{
-        
+
         await axios.post(process.env.REACT_APP_DATA_API_KEY, {
             name:dataName,
             score:cor
         })
-        
+
     }
     const handlePutData =async(item,cor)=>{
-        
+
         await axios.put(`${process.env.REACT_APP_DATA_API_KEY}/${item}`, {
             score:cor
         })
-       
+
     }
     
-    const handleSaveScore =()=>{
+    const handleSaveScore = ()=>{
+        console.log(allData)
             allData.map((item)=>{
                 if(item.name.toLowerCase()===dataName.toLowerCase()){
                     handlePutData(item.id,keyCount/5)
@@ -48,6 +49,7 @@ const Data = ({allData,setAllData}) => {
     useEffect(()=>{
         const getUsername=JSON.parse(localStorage.getItem("username"))
         dispatch(getData(getUsername))
+        
         const getDatafromServer = async () => {
           const response = await axios.get(process.env.REACT_APP_DATA_API_KEY);
           setAllData(response.data);
@@ -57,7 +59,7 @@ const Data = ({allData,setAllData}) => {
     },[isUpt,setAllData,dispatch])
     
   return (
-    <div >
+    <div>
         <button className='save-btn' onClick={handleSaveScore}>Save Score</button>
     </div>
   )

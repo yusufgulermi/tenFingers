@@ -7,46 +7,46 @@ import { incrementCor, incrementCorRes } from "../stores/correctCount";
 import { getStrokes } from "../stores/keystrokes";
 import { getData } from "../stores/data";
 
-var words = ["move","make","so","example","than","sometimes","with","for",
-"always","does","it's","family",
-"have","earth","may","use","along","say","children","begin","river",
-"after","can","question","night","are","or",
-"face","start","kind","almost","talk","her","paper","all","above","even",
-"boy","no","enough","what","go","book","live",
-"way","large","still","second","there","leave","feet",
-"sound","into","other","that","word","carry","had","their","got",
-"came","country","took","mother","land","tree","then","write","plant","is",
-"point","found","into","learn","been","just","America",
-"Indian","state","change","same","four",
-"tell","city","place","sentence","without","know","food","much",
-"end","list","house","own","study","our","see","boy","saw",
-"about","read","need","quite","father","also","long","ask","around",
-"where","come","line","might","under","begin","animal","thing",
-"small","school","mountain","walk","run","life","different",
-"something","thought","head","answer","near","over","until",
-"don't","who","them","together","mile","soon",
-"eat","down","could","water","build","building","muscle","grow",
-"box","side","between","should","picture","really"];
+var words = [
+  "move","make","so","example","than","sometimes","with","for",
+  "always","does","it's","family","have","earth","may","use",
+  "along","say","children","begin","river","after","can","question",
+  "night","are","or","face","start","kind","almost","talk","her",
+  "paper","all","above","even","boy","no","enough","what","go","book",
+  "live","way","large","still","second","there","leave",
+  "feet","sound","into","other","that","word","carry","had",
+  "their","got","came","country","took","mother","land","tree",
+  "then","write","plant","is","point","found","into","learn","been",
+  "just","America","Indian","state","change","same","four","tell",
+  "city","place","sentence","without","know","food","much","end",
+  "list","house","own","study","our","see","boy","saw","about",
+  "read","need","quite","father","also","long","ask","around",
+  "where","come","line","might","under","begin","animal","thing",
+  "small","school","mountain","walk","run",
+  "life","different","something","thought","head","answer","near","over",
+  "until","don't", "who", "them","together","mile","soon","eat",
+  "down","could","water","build","building","muscle","grow",
+  "box","side","between","should","picture","really"];
 var length = words.length;
 var firstCounter = 0;
 var oldCounter = 0;
 var code;
+var x = 0;
 const Words = () => {
   const count = useSelector((state) => state.counter.value);
   const timer = useSelector((state) => state.timer.value);
   const dispatch = useDispatch();
 
   const resetHandle = () => {
-    window.location.reload()
+    window.location.reload();
   };
- 
- 
+
   useEffect(() => {
-    document.addEventListener('keydown', event => {
-      code=event.code;
-    })
-    const getUsername=JSON.parse(localStorage.getItem("username"))
-    dispatch(getData(getUsername))
+    document.addEventListener("keydown", (event) => {
+      code = event.code;
+    });
+    const getUsername = JSON.parse(localStorage.getItem("username"));
+    dispatch(getData(getUsername));
     dispatch(incrementInCorRes(0));
     dispatch(incrementCorRes(0));
     let temp = words;
@@ -71,29 +71,40 @@ const Words = () => {
       return false;
     }
   };
-  if (timer === 0) {
-    document.getElementById("input1").disabled = true;
-  }
+  try {
+    if (timer === 0) {
+      document.getElementById("input1").disabled = true;
+    }
+  } catch (error) {}
+
   useEffect(() => {
-    if (code==="Space") {
+
+    if (document.getElementById(firstCounter).offsetTop > 10 + x) {
+      document.getElementById("words").style.transform = `translateY(-${
+        x + 54
+      }px)`;
+      x = x + 54;
+    }
+
+    if (code === "Space") {
       dispatch(increment(""));
     }
-    if (count.trim() !== "" && code==="Space") {
+    if (count.trim() !== "" && code === "Space") {
       if (words[firstCounter].trim() !== count.trim()) {
         document.getElementById(firstCounter).classList.add("incorrect");
         dispatch(incrementInCor());
       } else if (words[firstCounter].trim() === count.trim()) {
         document.getElementById(firstCounter).classList.add("correct");
         dispatch(incrementCor());
-        dispatch(getStrokes(words[firstCounter].length))
+        dispatch(getStrokes(words[firstCounter].length));
       }
       oldCounter = firstCounter;
       firstCounter += 1;
       dispatch(increment(""));
-      if(firstCounter===words.length){
+      if (firstCounter === words.length) {
         oldCounter = 0;
         firstCounter = 0;
-
+        console.log(firstCounter);
       }
     }
   }, [count, dispatch]);
@@ -114,13 +125,16 @@ const Words = () => {
 
   return (
     <div className="allWords">
-      <div id="words" className="words">
-        {words.map((item, index) => (
-          <p key={index} id={index}>
-            {item}
-          </p>
-        ))}
+      <div id="row" className="row">
+        <div id="words" className="words">
+          {words.map((item, index) => (
+            <p key={index} id={index}>
+              {item}
+            </p>
+          ))}
+        </div>
       </div>
+
       <div className="input-field">
         <input
           id="input1"

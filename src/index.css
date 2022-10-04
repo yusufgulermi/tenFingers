@@ -16,12 +16,6 @@ body {
   
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
 
 .App {
   width: 100%;
@@ -118,8 +112,10 @@ code {
   color: white;
 }
 .current{
+  width: auto;
+  z-index: 10;
   background-color: rgb(179, 179, 179);
-
+  
 }
 .allWords{
   position: relative;
@@ -130,21 +126,31 @@ code {
   gap: 20px;
   top: 80px;
 }
+.row{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 800px;
+  height: 110px;
+  overflow: hidden;
+  background-color: rgb(238, 236, 231);
+  border: 1px solid black;
+  border-radius: 10px;
+}
 .words{
   position: relative;
   font-size: 20px;
-  width: 600px;
-  height: 520px;
+  width: 800px;
+  height: 110px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
-  background-color: rgb(238, 236, 231);
   flex-wrap: wrap;
-  overflow: hidden;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
 }
 
 .correct{
@@ -191,9 +197,9 @@ code {
 }
 
 .input-field{
-
+  position: relative;
   display: flex;
-  width: 600px;
+  width: 700px;
   height: 60px;
   justify-content: center;
   align-items: center;
@@ -201,16 +207,19 @@ code {
   border-radius: 10px;
   gap: 50px;
 
+
+
 }
 #input1{
   width: 300px;
   height: 40px;
   border-radius: 5px;
   border: none;
-  font-size: 25px;
   padding-left: 20px;
   color: black;
   outline: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 30px;
 }
 .rst-btn{
   width: 50px;
