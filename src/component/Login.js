@@ -60,7 +60,7 @@ const Login = () => {
         </div>
         <div className="loginButtons">
         <button onClick={handleClick}>Login</button>
-        {isLogin === 1 ? <Link to="/main" id="loginSuccses"></Link> : null}
+        {isLogin === 1 ? <Link to="/" id="loginSuccses"></Link> : null}
         <Link to="/createAcc">
           <button>Create Account</button>
         </Link>

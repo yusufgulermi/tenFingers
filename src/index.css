@@ -291,7 +291,9 @@ body {
   padding-bottom: 2px;
 }
 
-
+.result-data{
+  height: 40px;
+}
 .save-btn{
   width: 100px;
   height: 50px;

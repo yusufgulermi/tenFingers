@@ -7,6 +7,7 @@ import { getData } from '../stores/data';
 var change=0;
 const Data = ({allData,setAllData}) => {
     const dispatch = useDispatch()
+    const getData2 = useSelector((state) => state.data.value);
     const dataName=useSelector((state)=>state.data.value)
     const keyCount= useSelector((state)=> state.keystrokes.value)
     const isUpt=useSelector((state)=>state.isUpdated.value)
@@ -59,8 +60,8 @@ const Data = ({allData,setAllData}) => {
     },[isUpt,setAllData,dispatch])
     
   return (
-    <div>
-        <button className='save-btn' onClick={handleSaveScore}>Save Score</button>
+    <div className='result-data'>
+        {getData2===""?<p>If you want to save your score login!</p>:<button className='save-btn' onClick={handleSaveScore}>Save Score</button>}
     </div>
   )
 }
